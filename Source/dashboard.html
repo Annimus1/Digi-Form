@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Dashboard</title>
+	<!-- CSS-->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+	<!-- Boostrap Icons -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+	<!-- custom styles -->
+	<link rel="stylesheet" type="text/css" href="../Styles/dashboard.css">
+</head>
+<body>
+
+	<header>
+		<button type="button" class="btn btn-secondary" id="clear"> <i class="bi bi-arrow-counterclockwise"></i> </button>
+		<sapan><img src="../Img/digital.png"></span>		
+	</header>
+
+	<div id="full-container">
+			
+		<section id="data">
+			<div>
+				<form id="client-data">					
+					
+					<div class="mb-3"> 
+					    <label for="client_name" class="form-label">Client's name</label>
+					    <input type="text" class="form-control" id="client_name"placeholder="Enter client's name." onchange="change_detected('client_name')" value>
+				  	</div>
+				  	
+				  	<div class="mb-3"> 
+					    <label for="phone" class="form-label">Phone</label>
+					    <input type="text" class="form-control" id="phone" aria-describedby="phone" placeholder="Enter client phone number." onchange="change_detected('phone')" value>
+
+				  	<div class="mb-3"> 
+					    <label for="address" class="form-label">Address</label>
+					    <input type="text" class="form-control" id="address" aria-describedby="address" placeholder="Enter property address." onchange="change_detected('address')" value>
+				  	</div>
+				
+				</form>
+			</div>
+
+			<br>
+
+			<div>
+			
+				<form id="gathering-info"> <!--action="note.html"-->
+					
+					<!--Market-->
+					<label class="form-check-label">Is the property for sale on the market?</label>
+					<div class="form-check" style="display: inline-block;">
+					  <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="no-market" onclick="hide('realtor')">
+					  <label class="form-check-label" for="no-market">No</label>
+					</div>
+					<div class="form-check" style="display: inline-block;">
+					  <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="yes-market" onclick="view('realtor')">
+					  <label class="form-check-label" for="yes-market">Yes</label>
+					</div>
+					<br>
+					<!--Market without the realtor-->			
+					<div id="realtor" style="display: none">
+						<div class="form-check" style="display: inline-block;">
+						  <label class="form-check-label">Would consider sell without the Realtor?</label>
+						  <br>
+						  <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="no-without-realtor">
+						  <label class="form-check-label" for="no-without-realtor">No</label>
+						</div>
+						<div class="form-check" style="display: inline-block;">
+						  <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="yes-without-realtor">
+						  <label class="form-check-label" for="yes-without-realtor">Yes</label>
+						</div>
+					</div>
+				  	<br>
+
+
+				  	<!--Rented-->
+				  	<label class="form-check-label">Is the property currently rented?</label>
+				  	<div class="mb-3" style="display: inline-block;"> 
+						<div class="form-check" style="display: inline-block;">
+						  <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="no-rented" onclick="hide('rented')">
+						  <label class="form-check-label" for="no-rented">No</label>
+						</div>
+						<div class="form-check" style="display: inline-block;">
+						  <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="yes-rented" onclick="view('rented')">
+						  <label class="form-check-label" for="yes-rented">Yes</label>
+						</div>
+				  	</div>
+				  	<br>
+				  	<div class="mb-3" id="rented" style="display:none;" > 
+				  		<label class="form-check-label">Are the tenants month to month or when does the lease ends?</label>
+					    <input type="text" class="form-control" id="kind-of-lease-input" aria-describedby="market" value="The tenant are month to month" onchange="change_detected('kind-of-lease-input')" onfocus="change_detected('kind-of-lease-input')">
+				  	</div>
+
+
+				  	<!--Time-frame-->
+				  	<div class="mb-3"> 
+				  		<label class="form-check-label">If we can come to an agreement how soon would you be looking to sell?</label>
+					    <input type="text" class="form-control" id="time-frame-input"  placeholder="Time-frame." value onchange="change_detected('time-frame-input')">
+				  	</div>
+				  	
+				  	<!--Reason--> 
+				  	<div class="mb-3"> 
+				  		<label class="form-check-label">Is there a special reason for wanting to sell?</label>
+					    <input type="text" class="form-control" id="reason-input" placeholder="Reason." onchange="change_detected('reason-input')" value>
+				  	</div>
+
+
+				  	<!--Basics -->
+					<label class="form-check-label">Can you tell me some basics about the property?</label>
+				  	<div class="input-group">
+					  	<span class="input-group-text">Basics</span>
+					  	<input type="text" class="form-control" id="beds" placeholder="Beds" onchange="change_detected('beds')" value>
+					  	<input type="text" class="form-control" id="baths" placeholder="Baths" onchange="change_detected('baths')" value>
+					  	<input type="text" class="form-control" id="sqft" placeholder="Sqft" onchange="change_detected('sqft')" value>
+					</div>
+					<br>
+
+				  	<!--Updates--> 
+				  	<div class="mb-3"> 
+				  		<label class="form-check-label">have you done any updates or improvements to the property?</label>
+					    <input type="text" class="form-control" id="updates-input" placeholder="Updates." 
+					    onchange="change_detected('updates-input')" value>
+				  	</div>
+
+
+				  	<!--Price--> 
+				  	<div class="mb-3"> 
+				  		<label class="form-check-label">Is there a ball-park amount that you’d be happy selling for?</label>
+					    <input type="text" class="form-control" id="price-input" placeholder="Price." 
+					    onchange="change_detected('price-input')" value>
+				  	</div>
+
+
+				  	<!--Listing-->
+				  	<label class="form-check-label"> would consider putting your property for sale on the market?
+					</label>
+				  	<div class="mb-3" style="display: inline-block;"> 
+						<div class="form-check" style="display: inline-block;">
+						  <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="no-listing">
+						  <label class="form-check-label" for="no-listing">No</label>
+						</div>
+						<div class="form-check" style="display: inline-block;">
+						  <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="yes-listing">
+						  <label class="form-check-label" for="yes-listing">Yes</label>
+						</div>
+				  	</div>
+				  	<br>
+
+
+				  	<!--Second Call-->
+				  	<label class="form-check-label"> Agreed with the second call.
+					</label>
+				  	<div class="mb-3" style="display: inline-block;"> 
+						<div class="form-check" style="display: inline-block;">
+						  <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="">
+						  <label class="form-check-label" for="">No</label>
+						</div>
+						<div class="form-check" style="display: inline-block;">
+						  <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="">
+						  <label class="form-check-label" for="">Yes</label>
+						</div>
+				  	</div>
+				  	<br>
+
+
+				  	<!--Information Confirmed-->
+				  	<label class="form-check-label"> Address, name and phone number confirmed
+					</label>
+				  	<div class="mb-3" style="display: inline-block;"> 
+						<div class="form-check" style="display: inline-block;">
+						  <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="">
+						  <label class="form-check-label" for="">No</label>
+						</div>
+						<div class="form-check" style="display: inline-block;">
+						  <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="">
+						  <label class="form-check-label" for="">Yes</label>
+						</div>
+				  	</div>
+				  	<br>
+
+
+				  	<!--Aditional notes-->
+				  	<label class="form-check-label"><strong>Aditional notes</strong></label>
+				  	<div class="mb-3" style="display: inline-block;"> 
+						<div class="form-check" style="display: inline-block;">
+						  <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="" onclick="hide('aditional-notes')">
+						  <label class="form-check-label" for="">No</label>
+						</div>
+						<div class="form-check" style="display: inline-block;">
+						  <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="" onclick="view('aditional-notes')">
+						  <label class="form-check-label" for="">Yes</label>
+						</div>
+				  	</div>
+				  	<br>
+				  	<div class="mb-3" id="aditional-notes" style="display: none;"> 
+					    <textarea type="text" class="form-control" id="a-notes" placeholder="Write here your aditional notes." onchange="change_detected('a-notes')" value></textarea>
+				  	</div>
+
+				</form>
+
+			</div>
+		</section>
+
+
+		<section id="note">
+			
+			<p id="_name" ></p>
+			<p id="_team"></p>
+			<br>
+			<p id="_client_name"></p>
+			<p id="_phone"></p>
+			<p id="_address"></p>
+			<br>
+			<p id="_price-input"></p>
+			<p id=""></p>
+			<p id=""></p>
+			<p id="_kind-of-lease-input"></p>
+			<p id="_time-frame-input"></p>
+			<p id="_reason-input"></p>
+			<p id="_beds" style="display:inline;"></p>
+			<p id="_baths" style="display:inline;"></p>
+			<p id="_sqft" style="display:inline;"></p>
+			<p id="_updates-input"></p>
+			<p id=""></p>
+			<p id=""></p>
+			<p id=""></p>
+			<p id=""></p>
+			<p id="_a-notes"></p>
+
+
+		</section>
+
+	</div>
+
+
+<script src="../Javascript/app.js">
+</script>
+</body>
+</html>
+
+<!--
+
+obtener tods los campo texto de la clase "form-control"
+let inputs = document.getElementsByClassName("form-control"); 
+
+for (let i = 0; i < inputs.length; i++) {
+  console.log(inputs[i].value+" "+inputs[i].id);
+}
+
+
+
+-->
