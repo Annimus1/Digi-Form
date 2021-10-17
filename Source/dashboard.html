@@ -13,7 +13,7 @@
 <body>
 
 	<header>
-		<button type="button" class="btn btn-secondary" id="clear"> <i class="bi bi-arrow-counterclockwise"></i> </button>
+		<button type="button" class="btn btn-secondary" id="back" onclick="main_page()"> <i class="bi bi-arrow-bar-left"></i> </button>
 		<sapan><img src="../Img/digital.png"></span>		
 	</header>
 
@@ -44,29 +44,30 @@
 
 			<div>
 			
-				<form id="gathering-info"> <!--action="note.html"-->
+				<form id="gathering-info"> 
 					
 					<!--Market-->
 					<label class="form-check-label">Is the property for sale on the market?</label>
 					<div class="form-check" style="display: inline-block;">
-					  <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="no-market" onclick="hide('realtor')">
+					  <input class="form-check-input" type="radio" name="market" id="no-market" onclick="hide('realtor');checks_change('market')">
 					  <label class="form-check-label" for="no-market">No</label>
 					</div>
 					<div class="form-check" style="display: inline-block;">
-					  <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="yes-market" onclick="view('realtor')">
+					  <input class="form-check-input" type="radio" name="market" id="yes-market" onclick="view('realtor');checks_change('market')">
 					  <label class="form-check-label" for="yes-market">Yes</label>
 					</div>
 					<br>
-					<!--Market without the realtor-->			
+					
+					<!--Market without the realtor-->	
 					<div id="realtor" style="display: none">
 						<div class="form-check" style="display: inline-block;">
 						  <label class="form-check-label">Would consider sell without the Realtor?</label>
 						  <br>
-						  <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="no-without-realtor">
+						  <input class="form-check-input" type="radio" name="realtor" id="no-without-realtor" onclick="checks_change('realtor')">
 						  <label class="form-check-label" for="no-without-realtor">No</label>
 						</div>
 						<div class="form-check" style="display: inline-block;">
-						  <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="yes-without-realtor">
+						  <input class="form-check-input" type="radio" name="realtor" id="yes-without-realtor" onclick="checks_change('realtor')">
 						  <label class="form-check-label" for="yes-without-realtor">Yes</label>
 						</div>
 					</div>
@@ -76,12 +77,12 @@
 				  	<!--Rented-->
 				  	<label class="form-check-label">Is the property currently rented?</label>
 				  	<div class="mb-3" style="display: inline-block;"> 
-						<div class="form-check" style="display: inline-block;">
-						  <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="no-rented" onclick="hide('rented')">
+						<div onclick="checks_change('lease')" class="form-check" style="display: inline-block;">
+						  <input class="form-check-input" type="radio" name="rented" id="no-rented" onclick="hide('rented');checks_change('lease')">
 						  <label class="form-check-label" for="no-rented">No</label>
 						</div>
 						<div class="form-check" style="display: inline-block;">
-						  <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="yes-rented" onclick="view('rented')">
+						  <input class="form-check-input" type="radio" name="rented" id="yes-rented" onclick="view('rented');checks_change('lease')">
 						  <label class="form-check-label" for="yes-rented">Yes</label>
 						</div>
 				  	</div>
@@ -136,11 +137,11 @@
 					</label>
 				  	<div class="mb-3" style="display: inline-block;"> 
 						<div class="form-check" style="display: inline-block;">
-						  <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="no-listing">
+						  <input onclick="checks_change('listing')" class="form-check-input" type="radio" name="listing" id="no-listing">
 						  <label class="form-check-label" for="no-listing">No</label>
 						</div>
 						<div class="form-check" style="display: inline-block;">
-						  <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="yes-listing">
+						  <input onclick="checks_change('listing')" class="form-check-input" type="radio" name="listing" id="yes-listing">
 						  <label class="form-check-label" for="yes-listing">Yes</label>
 						</div>
 				  	</div>
@@ -152,11 +153,11 @@
 					</label>
 				  	<div class="mb-3" style="display: inline-block;"> 
 						<div class="form-check" style="display: inline-block;">
-						  <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="">
+						  <input onclick="checks_change('second-call')" class="form-check-input" type="radio" name="call" id="no-second-call">
 						  <label class="form-check-label" for="">No</label>
 						</div>
 						<div class="form-check" style="display: inline-block;">
-						  <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="">
+						  <input onclick="checks_change('second-call')" class="form-check-input" type="radio" name="call" id="yes-second-call">
 						  <label class="form-check-label" for="">Yes</label>
 						</div>
 				  	</div>
@@ -164,30 +165,37 @@
 
 
 				  	<!--Information Confirmed-->
-				  	<label class="form-check-label"> Address, name and phone number confirmed
-					</label>
-				  	<div class="mb-3" style="display: inline-block;"> 
-						<div class="form-check" style="display: inline-block;">
-						  <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="">
-						  <label class="form-check-label" for="">No</label>
-						</div>
-						<div class="form-check" style="display: inline-block;">
-						  <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="">
-						  <label class="form-check-label" for="">Yes</label>
-						</div>
-				  	</div>
-				  	<br>
+				  	<div class="mb-3">
+				  		<label class="form-check-label"> Address, name and phone number confirmed</label> 
+							<input class="form-check-input" type="checkbox" onchange="checks_change('confirmed')" id="option">
+					</div>
+
+					<div class="mb-3" id="confirmed" style="display:none;">
+
+						<label class="form-check-label">All </label>
+						<input class="form-check-input" type="checkbox" id="all-c" onchange="confirmed('all')">
+						<br>
+
+						<label class="form-check-label">Address </label>
+						<input class="form-check-input" type="checkbox" id="address-c" onchange="confirmed('one')">
+
+						<label class="form-check-label">Name </label>
+						<input class="form-check-input" type="checkbox" id="name-c" onchange="confirmed('one')">
+
+						<label class="form-check-label">Phone </label>
+						<input class="form-check-input" type="checkbox" id="phone-c" onchange="confirmed('one')">
+					</div>
 
 
 				  	<!--Aditional notes-->
 				  	<label class="form-check-label"><strong>Aditional notes</strong></label>
 				  	<div class="mb-3" style="display: inline-block;"> 
 						<div class="form-check" style="display: inline-block;">
-						  <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="" onclick="hide('aditional-notes')">
+						  <input class="form-check-input" type="radio" name="note" id="" onclick="hide('aditional-notes')">
 						  <label class="form-check-label" for="">No</label>
 						</div>
 						<div class="form-check" style="display: inline-block;">
-						  <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="" onclick="view('aditional-notes')">
+						  <input class="form-check-input" type="radio" name="note" id="" onclick="view('aditional-notes')">
 						  <label class="form-check-label" for="">Yes</label>
 						</div>
 				  	</div>
@@ -195,6 +203,7 @@
 				  	<div class="mb-3" id="aditional-notes" style="display: none;"> 
 					    <textarea type="text" class="form-control" id="a-notes" placeholder="Write here your aditional notes." onchange="change_detected('a-notes')" value></textarea>
 				  	</div>
+				  	<br>
 
 				</form>
 
@@ -206,14 +215,18 @@
 			
 			<p id="_name" ></p>
 			<p id="_team"></p>
+			<p id="_date"></p>
+			<br>
 			<br>
 			<p id="_client_name"></p>
 			<p id="_phone"></p>
 			<p id="_address"></p>
-			<br>
+			<br><br>
+			<p id="_confirmed"></p>
 			<p id="_price-input"></p>
-			<p id=""></p>
-			<p id=""></p>
+			<p id="_market"></p>
+			<p id="_realtor"></p>
+			<p id="_lease"></p>
 			<p id="_kind-of-lease-input"></p>
 			<p id="_time-frame-input"></p>
 			<p id="_reason-input"></p>
@@ -221,9 +234,8 @@
 			<p id="_baths" style="display:inline;"></p>
 			<p id="_sqft" style="display:inline;"></p>
 			<p id="_updates-input"></p>
-			<p id=""></p>
-			<p id=""></p>
-			<p id=""></p>
+			<p id="_listing"></p>
+			<p id="_second-call"></p>
 			<p id=""></p>
 			<p id="_a-notes"></p>
 
@@ -237,16 +249,3 @@
 </script>
 </body>
 </html>
-
-<!--
-
-obtener tods los campo texto de la clase "form-control"
-let inputs = document.getElementsByClassName("form-control"); 
-
-for (let i = 0; i < inputs.length; i++) {
-  console.log(inputs[i].value+" "+inputs[i].id);
-}
-
-
-
--->
