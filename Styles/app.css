@@ -1,0 +1,49 @@
+body{
+	color: #0bd373;
+	background-color: #303a3c;
+}
+
+main{
+	width: 100%;
+	height: auto;
+}
+
+header{
+	text-align: center;
+}
+
+i{
+	color:#0bd373;
+}
+
+.main-container{
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+}
+
+.scriptSection, .displaySection{
+	padding: 2%;
+}
+
+.displaySection{
+	border-left: 1px solid #0bd373;
+}
+
+.displaySection>div>textarea{
+	border: 0;
+	height: 500px;
+	color: #0bd373;
+	background-color: #303a3c;
+}
+.displaySection>div>button{
+	padding: 7px 30px;
+	margin-left: calc(40% - 30px);
+}
+.leadOptions{
+	display: flex;
+	justify-content: space-between;
+}
+
+.radio{
+	padding-left: 1em;
+}

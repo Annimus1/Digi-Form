@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    	<meta charset="utf-8">
+    	<title>Digi-Form</title>
+      <link rel="icon" href="../Img/D.png">
+      <!-- <link rel="icon" type="image/x-icon" href="/images/favicon.ico"> -->
+    	<!-- Boostrap CSS-->
+    	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    	<!-- Boostrap Icons -->
+    	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    	<!-- custom styles -->
+    	<link rel="stylesheet" type="text/css" href="../Styles/app.css">
+    </head>
+
+  <body>
+    <main>
+      <header>
+        <!-- HEADER SECTION
+        Here we can find out logo and behavior button such as refresh
+        also a redirectional button to login again.
+        -->
+        <button type="button" class="btn btn-secondary" id="back" title="go back to login"> <i class="bi bi-arrow-bar-left"></i> </button>
+    		<span><img src="../Img/digital.png"/></span>
+        <button type="button" class="btn btn-secondary" id="refresh" title="refresh"> <i class="bi bi-arrow-repeat"></i> </button>
+      </header>
+
+      <div class="main-container">
+      <!--MAIN CONTAINER -->
+        <div class="scriptSection">
+        <!--
+        Here we have all kind of leads structure.
+        -->
+          <section class="clientData">
+            <!--CLIENT SECTION
+            Here we can provide basic informtion about the client needed to a successful lead.
+            -->
+            <form id="clientData">
+    					  <div class="mb-3">
+    					    <label for="client_name" class="form-label ">Client's name</label>
+    					    <input type="text" class="form-control clientDataInput" id="name" placeholder="Enter client's name." value>
+    				  	</div>
+
+    				  	<div class="mb-3">
+    					    <label for="phone" class="form-label">Phone</label>
+    					    <input type="text" class="form-control clientDataInput" id="phone" aria-describedby="phone" placeholder="Enter client phone number." value>
+
+    				  	<div class="mb-3">
+    					    <label for="address" class="form-label">Address</label>
+    					    <input type="text" class="form-control clientDataInput" id="address" aria-describedby="address" placeholder="Enter property address." value>
+    				  	</div>
+
+                <div class="mb-3 leadOptions">
+                  <!-- Here the agent will be able to decide which kind of lead is going to do.-->
+    					    <div class="">
+                    <label for="kind-of-lead" class="form-label">Seller</label>
+                    <input class="form-check-input" type="radio" name="kind-of-lead" id="seller" checked>
+                  </div>
+                  
+                  <div class="">
+    					      <label for="buyer" class="form-label">Buyer</label>
+                    <input class="form-check-input" type="radio" name="kind-of-lead" id="buyer" >
+                  </div>
+
+                  <div class="">
+                    <label for="lot-land" class="form-label">Lot/Land</label>
+                    <input class="form-check-input" type="radio" name="kind-of-lead" id="land" >
+                  </div>
+
+                  <div class="">
+      					    <label for="commercial" class="form-label">Commercial</label>
+                    <input class="form-check-input" type="radio" name="kind-of-lead" id="commercial" >
+                  </div>
+                </div>
+            </form>          
+          </section>
+          <!-- ALL SECTIONS BELOW ARE HIDDEN BY DEFAULT UNLESS THE AGENT SELECT ANY OF THE BUTTONS ABOVE-->
+
+          <section id="sellerSection">
+            <!-- SELLER SECTION
+              In this section the agent will be able to recolec all the informtion needed to a successful seller lead.
+            -->
+    			  <form id="sellerform">
+              
+              <!--Market-->
+              <label class="form-check-label">Is the property for sales on the market?</label>
+              <div class="radio" style="display: inline-block;">
+                <div class="form-check" style="display: inline-block;">
+                  <input class="form-check-input" type="radio" name="market" id="marketNo" value=false>
+                  <label class="form-check-label" for="no-market">No</label>
+                </div>
+
+                
+                <div class="form-check" style="display: inline-block;">
+                  <input class="form-check-input" type="radio" name="market" id="marketYes" value=true>
+                  <label class="form-check-label" for="yes-market">Yes</label>
+                </div>
+                
+              </div>
+
+              <div  id ="marketOption" style="display: none;">
+                <select id="selectOption" class="form-select">
+                  <option value ="on the market with a Realtor." selected>With a Realtor.</option>
+                  <option value="on the market by owner.">By owner.</option>
+                  <option value="under contract.">Under contract.</option>
+                </select>
+              </div>
+
+              <!--Market without the realtor--> 
+              <div id="market" style="display: none;">
+                <label class="form-check-label">Would consider sell without the Realtor?</label>
+                <div>
+                  <div class="form-check" style="display: inline-block;">
+                    <input class="form-check-input" type="radio" name="realtor" id="realtorNo">
+                    <label class="form-check-label" for="no-without-realtor">No</label>
+                  </div>
+
+                  <div class="form-check" style="display: inline-block;">
+                    <input class="form-check-input" type="radio" name="realtor" id="realtorYes">
+                    <label class="form-check-label" for="yes-without-realtor">Yes</label>
+                  </div>
+                </div>
+              </div>
+
+
+              <!--Rented-->
+              <label class="form-check-label">Is the property currently rented?</label>
+              <div class="radio" style="display: inline-block;">
+                <div class="mb-3" style="display: inline-block;"> 
+                  <div  class="form-check" style="display: inline-block;">
+                    <input class="form-check-input" type="radio" name="rented" id="rentedNo">
+                    <label class="form-check-label" for="rentedNo">No</label>
+                  </div>
+                  <div class="form-check" style="display: inline-block;">
+                    <input class="form-check-input" type="radio" name="rented" id="rentedYes">
+                    <label class="form-check-label" for="rentedYes">Yes</label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mb-3" id="rented" style="display: none;"> 
+                <label class="form-check-label">Are the tenants month to month or when does the lease ends?</label>
+                <input type="text" class="form-control" id="rentedImput" value="The tenants are month to month">
+              </div>
+
+              <!--Time-frame-->
+              <!-- <div class="mb-3"> 
+                <label class="form-check-label">If we can come to an agreement how soon would you be looking to sell?</label>
+                <input type="text" class="form-control" id="" placeholder="Time-frame.">
+              </div> -->
+
+              <!--Reason--> 
+              <!-- <div class="mb-3"> 
+                <label class="form-check-label">Is there a special reason for wanting to sell?</label>
+                <input type="text" class="form-control" id="" placeholder="Reason." value>
+              </div> -->
+
+              <!--Basics -->
+             <!--  <label class="form-check-label">Can you tell me some basics about the property?</label>
+                <div class="input-group">
+                  <span class="input-group-text">Basics</span>
+                  <input type="text" class="form-control" id="beds" placeholder="Beds"value>
+                  <input type="text" class="form-control" id="baths" placeholder="Baths" value>
+                  <input type="text" class="form-control" id="sqft" placeholder="Sqft" value>
+              </div> -->
+
+
+
+
+
+
+
+
+            </form>
+          </section>
+
+          <section id="buyerSection" style="display: none">
+            <!-- BUYER SECTION
+            -->
+            <label for="" class="form-label">Buyer</label>
+          </section>
+
+          <section id="landSection" style="display: none">
+            <!-- LOT/LAND SECTION
+            -->
+            <label for="" class="form-label">Lot/Land</label>
+          </section>
+
+          <section id="commercialSection" style="display: none">
+            <!-- commercial SECTION
+            -->
+            <label for="" class="form-label">commercial</label>
+          </section>
+
+        </div>
+          
+        <!--
+        ################################ 
+        # Finishing the script sections#
+        ################################  
+        -->
+
+        <section class="displaySection">
+          <!-- 
+          Here we'll display the note in an editable input to be able to copy it 
+          into the cliptboard.
+          -->
+          <div class="mb-3">
+            <textarea type="text" class="form-control" id="display" value></textarea>
+            <button role="button" class="btn btn-secondary">Copy</button>
+          </div>
+        </section>
+      
+      </div>
+
+
+    </main>
+
+
+    <script type="module" src="./index.js"></script>
+  </body>
+</html>
