@@ -36,8 +36,16 @@ export class ClientInfo{
 			this.clientInfo += `Phone number: ${this.phone}\n`
 		}
 		if(this.address != ""){
-			this.clientInfo += `Address: ${this.address}\n\n`;
+			this.clientInfo += `Address: ${this.address}`;
 		}
+	}
+
+	reset(){
+		this.name = "";				
+		this.phone = "";			
+		this.address = "";			
+		this.numberOfAttribs = 3;
+		this.clientInfo = "";
 	}
 
 }

@@ -15,10 +15,24 @@ agentData = JSON.parse(agentData); // parsing the info into an object.
  
 // create a paragraph where the agent's info is setted
 let agentNote = `Agent's name: **${agentData.name}**.\n"`
-+`${agentData.nickname}" during the call.\n\n**${ agentData.team}/**${agentData.portal}*`
-+`*\nCredential: ${agentData.credential}`;
++`${agentData.nickname}" during the call.\n**${ agentData.team}/**${agentData.portal}*`
++`*\nCredential: ${agentData.credential}\n`;
 
 display();
+
+Swal.fire({
+  title: '<strong>Please be aware of:</strong>',
+  icon: 'info',
+  position: 'top',
+  html:
+    `<ul>
+    <li>You can edit your note by clicking over the right-side section.</li>
+    <li>Please just edit your note when you filled all the fields, otherwise the note would be overwritten by itself.</li>
+    </ul>`,
+  showCloseButton: true,
+})
+
+
 
 //focus on the first input
 document.getElementById("name").focus();
@@ -32,21 +46,144 @@ document.querySelectorAll('.clientDataInput').forEach(htmlElement => {
 	})
 });
 
-
 // adding events to handle the click event on kind of leads pickers 
 document.querySelectorAll('[name="kind-of-lead"]').forEach(radiobuton =>{
 	radiobuton.addEventListener("click",kindOfLead);
 });
 
-//
+// market
 document.querySelectorAll('[name=market]').forEach(radiobuton =>{
 	radiobuton.addEventListener("click",()=>{
 		sellerData.setAttribMarket("market",radiobuton.value,3);
+		display();
 	})});
 
+//
 document.getElementById('selectOption').addEventListener('change',()=>{
-	sellerData.setAttribMarket("market","true",3);
+	sellerData.setAttribMarket("market","true",1);
+	display();
 })
+
+// market
+document.querySelectorAll('[name=realtor]').forEach(radiobuton =>{
+	radiobuton.addEventListener("click",()=>{
+		sellerData.setAttribMarket("realtor",radiobuton.value,3);
+		display();
+	})});
+
+// rented
+document.querySelectorAll('[name=rented]').forEach(radiobuton =>{
+	radiobuton.addEventListener("click",()=>{
+		sellerData.setAttribRented("rented",radiobuton.value,2);
+		display();
+	})});
+
+// rented
+document.querySelector("#lease").addEventListener("change",()=>{
+	sellerData.setAttribRented("lease",document.querySelector("#lease").value,1);
+	display();
+});
+
+//rented
+document.querySelector("#noRentedInput").addEventListener("change",()=>{
+	sellerData.setAttribRented("status",document.querySelector("#noRentedInput").value,1);
+	display();
+});
+
+// main
+//time
+document.querySelector("#time").addEventListener("change",()=>{
+	sellerData.setAttribMain("time",document.querySelector("#time").value);
+	display();
+})
+
+//reason
+document.querySelector("#reason").addEventListener("change",()=>{
+	sellerData.setAttribMain("reason",document.querySelector("#reason").value);
+	display();
+})
+
+//price
+document.querySelector("#price").addEventListener("change",()=>{
+	sellerData.setAttribMain("price",document.querySelector("#price").value);
+	display();
+})
+
+//basics
+document.querySelectorAll('[name="basics"]').forEach( item =>{
+	item.addEventListener('change',()=>{
+		sellerData.setAttribBasics(item.id,item.value);
+		display();
+	});
+});
+
+document.querySelector("#metric").addEventListener("change",()=>{
+	
+	sellerData.setAttribBasics("dimention",document.querySelector("#dimention").value);
+	display();
+})
+
+//listing
+document.querySelectorAll('[name=listing]').forEach(radiobuton =>{
+	radiobuton.addEventListener("click",()=>{
+		sellerData.setAttribMarket("listing",radiobuton.value,1);
+		display();
+	})});
+
+//Confirm
+document.querySelectorAll('[name=call]').forEach(radiobuton =>{
+	radiobuton.addEventListener("click",()=>{
+		sellerData.setAttribConfirm("call",radiobuton.value);
+		display();
+	})});
+
+
+//####################BUTTONS#############################
+
+// copy
+document.getElementById("btnCopy").addEventListener("click",()=>{
+	try{
+
+		let text = document.querySelector("#display");
+		
+		text.select();
+		document.execCommand("copy");
+
+		Swal.fire({
+		  position: 'top-end',
+		  icon: 'success',
+		  title: 'Copied to clipboard successfully',
+		  showConfirmButton: false,
+		  timer: 1500
+		})
+	}
+	catch (e) {
+		Swal.fire({
+		  position: 'top-end',
+		  icon: 'error',
+		  title: 'Something went wrong :c ',
+		  showConfirmButton: false,
+		  timer: 2000
+		})
+
+	}
+})
+
+// refresh
+document.getElementById("reset").addEventListener("click",()=>{
+	document.querySelectorAll("form").forEach(form =>{
+		form.reset();
+	})
+	clientData.reset();
+	sellerData.reset();
+	display();
+})
+
+//back
+document.getElementById("back").addEventListener("click",()=>{
+	window.location.href="../index.html";
+});
+
 
 //####################FUNCTIONS#############################
 
@@ -71,16 +208,22 @@ function kindOfLead(){  // [+]
 			document.getElementById(`${e.id}Section`).style.display = "none";
 		}
 	});
+	display();
 }
 
 function display(){     // [+]
 	// console.log()
 	var note = "";
-	var items = [agentNote,clientData.clientInfo]
+
+	var date = Date();
+	var date2 = date.split(" ");
+	date = `${date2[0]} ${date2[2]}  ${date2[4]}\n`;
+
+	var items = [agentNote,date,clientData.clientInfo,sellerData.sellerNote];
 
 	items.forEach(item => {
-		if(item != ""){
-			note += item+"\n\n";
+		if(item != "" && item != undefined){
+			note += item+"\n";
 		}
 	})
 

@@ -22,7 +22,7 @@
         -->
         <button type="button" class="btn btn-secondary" id="back" title="go back to login"> <i class="bi bi-arrow-bar-left"></i> </button>
     		<span><img src="../Img/digital.png"/></span>
-        <button type="button" class="btn btn-secondary" id="refresh" title="refresh"> <i class="bi bi-arrow-repeat"></i> </button>
+        <button type="button" class="btn btn-secondary" id="reset" title="reset"> <i class="bi bi-arrow-repeat"></i> </button>
       </header>
 
       <div class="main-container">
@@ -56,7 +56,7 @@
                     <label for="kind-of-lead" class="form-label">Seller</label>
                     <input class="form-check-input" type="radio" name="kind-of-lead" id="seller" checked>
                   </div>
-                  
+                  <!--
                   <div class="">
     					      <label for="buyer" class="form-label">Buyer</label>
                     <input class="form-check-input" type="radio" name="kind-of-lead" id="buyer" >
@@ -71,6 +71,7 @@
       					    <label for="commercial" class="form-label">Commercial</label>
                     <input class="form-check-input" type="radio" name="kind-of-lead" id="commercial" >
                   </div>
+                  -->
                 </div>
             </form>          
           </section>
@@ -83,56 +84,54 @@
     			  <form id="sellerform">
               
               <!--Market-->
-              <label class="form-check-label">Is the property for sales on the market?</label>
-              <div class="radio" style="display: inline-block;">
+              <label class="form-check-label">Is the property for sale on the market?</label>
+              <div class="radio mb-3" style="display: inline-block;">
                 <div class="form-check" style="display: inline-block;">
                   <input class="form-check-input" type="radio" name="market" id="marketNo" value=false>
                   <label class="form-check-label" for="no-market">No</label>
                 </div>
 
-                
                 <div class="form-check" style="display: inline-block;">
                   <input class="form-check-input" type="radio" name="market" id="marketYes" value=true>
                   <label class="form-check-label" for="yes-market">Yes</label>
                 </div>
-                
               </div>
 
-              <div  id ="marketOption" style="display: none;">
+              <div class="mb-3" id ="marketOption" style="display: none;">
                 <select id="selectOption" class="form-select">
                   <option value ="on the market with a Realtor." selected>With a Realtor.</option>
-                  <option value="on the market by owner.">By owner.</option>
+                  <option value="on the market for sale by owner.">By owner.</option>
                   <option value="under contract.">Under contract.</option>
                 </select>
               </div>
 
               <!--Market without the realtor--> 
-              <div id="market" style="display: none;">
-                <label class="form-check-label">Would consider sell without the Realtor?</label>
+              <div class="mb-3" id="market" style="display: none;">
                 <div>
+                <label class="form-check-label">Would consider sell without the Realtor?</label>
                   <div class="form-check" style="display: inline-block;">
-                    <input class="form-check-input" type="radio" name="realtor" id="realtorNo">
+                    <input class="form-check-input" type="radio" name="realtor" id="realtorNo" value=false>
                     <label class="form-check-label" for="no-without-realtor">No</label>
                   </div>
 
                   <div class="form-check" style="display: inline-block;">
-                    <input class="form-check-input" type="radio" name="realtor" id="realtorYes">
+                    <input class="form-check-input" type="radio" name="realtor" id="realtorYes" value=true>
                     <label class="form-check-label" for="yes-without-realtor">Yes</label>
                   </div>
                 </div>
               </div>
-
 
               <!--Rented-->
               <label class="form-check-label">Is the property currently rented?</label>
               <div class="radio" style="display: inline-block;">
                 <div class="mb-3" style="display: inline-block;"> 
                   <div  class="form-check" style="display: inline-block;">
-                    <input class="form-check-input" type="radio" name="rented" id="rentedNo">
+                    <input class="form-check-input" type="radio" name="rented" id="rentedNo" value=false>
                     <label class="form-check-label" for="rentedNo">No</label>
                   </div>
+
                   <div class="form-check" style="display: inline-block;">
-                    <input class="form-check-input" type="radio" name="rented" id="rentedYes">
+                    <input class="form-check-input" type="radio" name="rented" id="rentedYes" value=true>
                     <label class="form-check-label" for="rentedYes">Yes</label>
                   </div>
                 </div>
@@ -140,36 +139,106 @@
 
               <div class="mb-3" id="rented" style="display: none;"> 
                 <label class="form-check-label">Are the tenants month to month or when does the lease ends?</label>
-                <input type="text" class="form-control" id="rentedImput" value="The tenants are month to month">
+                <input type="text" list="leaseOptions" class="form-control" id="lease" placeholder="The tenants are month to month">
+                <datalist id="leaseOptions">
+                  <option>The tenants are month to month</option>
+                  <option>The tenants have a yearly lease</option>
+                </datalist>
+              </div>
+
+              <div class="mb-3" id="noRented" style="display: none;">
+                <input type="text" list="noRentedOption" id="noRentedInput" class="form-control" placeholder="The owner lives there.">
+                <datalist id="noRentedOption">
+                  <option>The owner lives there.</option>
+                  <option>The property is vacant.</option>
+                </datalist>
               </div>
 
               <!--Time-frame-->
-              <!-- <div class="mb-3"> 
-                <label class="form-check-label">If we can come to an agreement how soon would you be looking to sell?</label>
-                <input type="text" class="form-control" id="" placeholder="Time-frame.">
-              </div> -->
+              <div class="mb-3"> 
+                <label class="form-check-label" for="time">If we can come to an agreement how soon would you be looking to sell?</label>
+                <input type="text" class="form-control" id="time" list="timeOptions" placeholder="Time-frame.">
+                <datalist id="timeOptions">
+                  <option>depending on the offer</option>
+                  <option>as soon as we give them the money</option>
+                  <option>as soon as the owner finds another place to move</option>
+                </datalist>
+              </div> 
+
 
               <!--Reason--> 
-              <!-- <div class="mb-3"> 
-                <label class="form-check-label">Is there a special reason for wanting to sell?</label>
-                <input type="text" class="form-control" id="" placeholder="Reason." value>
-              </div> -->
+              <div class="mb-3"> 
+                <label class="form-check-label">Is there any special reason for wanting to sell?</label>
+                <input type="text" class="form-control" id="reason" list="reasonOptios" placeholder="Reason." value>
+                <datalist id="reasonOptios">
+                  <option>Just because of the money.</option>
+                  <option>No reason, just for the right price.</option>
+                  <option>The owner doesn't use it anymore</option>
+                  <option>The owner doesn't need it anymore</option>
+                  <option>Downsizing.</option>
+                  <option>Upsizing.</option>
+                  <option>Relocating.</option>
+                  <option>Moving out.</option>                  
+                </datalist>
+              </div>
 
               <!--Basics -->
-             <!--  <label class="form-check-label">Can you tell me some basics about the property?</label>
-                <div class="input-group">
+              <label class="form-check-label">Can you tell me some basics about the property?</label>
+              <div class="mb-3 input-group">
                   <span class="input-group-text">Basics</span>
-                  <input type="text" class="form-control" id="beds" placeholder="Beds"value>
-                  <input type="text" class="form-control" id="baths" placeholder="Baths" value>
-                  <input type="text" class="form-control" id="sqft" placeholder="Sqft" value>
-              </div> -->
+                  <input type="number" name="basics" class="form-control" id="beds" placeholder="Beds"value>
+                  <input type="number" name="basics" class="form-control" id="baths" placeholder="Baths" value>
+                  <input type="text" name="basics" class="form-control" id="dimention" placeholder="Sqft" value>
+                  
+                  <select id="metric" class="form-select input-group-text">
+                    <option value ="Sqft." selected>Sqft</option>
+                    <option value="Acres.">Acres</option>
+                </select>
+              </div>
 
+              <!--Updates--> 
+              <label class="form-check-label">Have you done any updates or improvements to the property?</label>
+              <div class="mb-3"> 
+                <textarea type="text" name="basics" class="form-control" id="updates" placeholder="Improvements" value></textarea>
+              </div>
 
+              <!--Price--> 
+              <label class="form-check-label">Is there a ball-park amount that you’d be happy selling for?</label>
+              <div class="mb-3"> 
+                <input type="text" class="form-control" list="priceOption" id="price" placeholder="Price.">
 
+                <datalist id="priceOption">
+                  <option>Willing to hear offers</option>
+                </datalist>
+              </div>
 
+              <!--Listing-->
+              <label class="form-check-label"> Would consider putting <br>the property for sale on the market <b>with us</b>?</label>
+              <div class="radio mb-3" style="display: inline-block;"> 
+                <div class="form-check" style="display: inline-block;">
+                  <input class="form-check-input" type="radio" name="listing" value=false>
+                  <label class="form-check-label">No</label>
+                </div>
+                
+                <div class="form-check" style="display: inline-block;">
+                  <input class="form-check-input" type="radio" name="listing" value=true>
+                  <label class="form-check-label">Yes</label>
+                </div>
+              </div>
+              
+              <!--Second Call-->
+              <label class="form-check-label"> Agreed with the second call.</label>
+              <div class="mb-3" style="display: inline-block;"> 
+                <div class="form-check" style="display: inline-block;">
+                  <input class="form-check-input" type="radio" name="call" value=false>
+                  <label class="form-check-label">No</label>
+                </div>
 
-
-
+                <div class="form-check" style="display: inline-block;">
+                  <input class="form-check-input" type="radio" name="call" value=true>
+                  <label class="form-check-label">Yes</label>
+                </div>
+              </div>
 
             </form>
           </section>
@@ -207,16 +276,17 @@
           -->
           <div class="mb-3">
             <textarea type="text" class="form-control" id="display" value></textarea>
-            <button role="button" class="btn btn-secondary">Copy</button>
+            <button id="btnCopy" role="button" class="btn btn-secondary">Copy</button>
           </div>
         </section>
       
       </div>
-
-
     </main>
+    <footer>
+      <span id="version">version: 1.2.5-b</span>
+    </footer>
 
-
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.3.0/dist/sweetalert2.all.min.js"></script>
     <script type="module" src="./index.js"></script>
   </body>
 </html>

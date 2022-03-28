@@ -1,15 +1,16 @@
 currentBrouser = ()=> {
 	let userAgent = navigator.userAgent;
          
-    if(userAgent.match(/chrome|chromium|crios/i)){
+    if(userAgent.match(/chrome|chromium/i)){
     	console.log("Chrome");
     }else {
-    	throw "In order to the best behavior of this app, please use Google Chrome browser.";
+    	Swal.fire({
+		  icon: 'info',
+		  title: 'Please, keep this in mind:',
+		  text: 'In order to the best behavior of this app, please use Google Chrome browser.'
+		})
     }         
 }
-
-
-
 
 
 function sendData(){
@@ -50,6 +51,10 @@ try{
 }
 
 catch (e) {
-	document.getElementById("error").style.display = "block";
+	Swal.fire({
+	  icon: 'error',
+	  title: 'Ups...',
+	  text: 'Something went wrong.'
+	})
 }
 
