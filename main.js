@@ -35,7 +35,7 @@ function sendData(){
 
 	localStorage.setItem('Data', data);
 
-	window.location.href="../src/App.html";
+	window.location.href="src/App.html";
 }
 
 
