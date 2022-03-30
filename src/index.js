@@ -15,7 +15,7 @@ agentData = JSON.parse(agentData); // parsing the info into an object.
  
 // create a paragraph where the agent's info is setted
 let agentNote = `Agent's name: **${agentData.name}**.\n"`
-+`${agentData.nickname}" during the call.\n**${ agentData.team}/**${agentData.portal}*`
++`${agentData.nickname}" during the call.\n**${ agentData.team}**/**${agentData.portal}*`
 +`*\nCredential: ${agentData.credential}\n`;
 
 display();
