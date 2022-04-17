@@ -1,9 +1,9 @@
-currentBrouser = ()=> {
+currentBrouser = ()=> { //check which browser the user have.
 	let userAgent = navigator.userAgent;
          
     if(userAgent.match(/chrome|chromium/i)){
     	console.log("Chrome");
-    }else {
+    }else { // if is not Chrome, show a warning 
     	Swal.fire({
 		  icon: 'info',
 		  title: 'Please, keep this in mind:',
@@ -13,7 +13,7 @@ currentBrouser = ()=> {
 }
 
 
-function sendData(){
+function sendData(){ // take all input values and save it into local storage.
 
 	info = [
 		document.getElementById('name').value,
@@ -35,18 +35,48 @@ function sendData(){
 
 	localStorage.setItem('Data', data);
 
-	window.location.href="src/App.html";
+	window.location.href="src/App.html"; //change the src to the page foward
 }
 
 
-try{
+// Start Point:
 
+try{
 	currentBrouser();
 
 	document.getElementById('name').focus();
 
-	document.getElementById('submit').addEventListener('click',()=>{
-		sendData();
+	document.getElementById('submit').addEventListener('click',(event)=>{
+		event.preventDefault(); 
+		try{
+			document.querySelectorAll("input")
+			.forEach(input =>{
+				//Check each input
+				if(input.value==""){
+					/*
+					if the input is empty remove the class "is-valid" 
+					and also add the class "is-invalid"
+					*/
+					input.classList.remove("is-valid");
+					input.classList.add("is-invalid");
+					throw "You must fill all fields.";
+				}
+				else{
+					input.classList.remove("is-invalid");
+					input.classList.add("is-valid");
+				}
+			});
+			// Finaly excecute "sendData" function
+			sendData();
+
+		}
+		catch (err){
+			Swal.fire({
+			  icon: 'error',
+			  title: 'Hey :/',
+			  text: `${err}`
+			});
+		}				
 	});
 }
 
@@ -54,7 +84,7 @@ catch (e) {
 	Swal.fire({
 	  icon: 'error',
 	  title: 'Ups...',
-	  text: 'Something went wrong.'
+	  text: ':c Something went wrong.'
 	})
 }
 

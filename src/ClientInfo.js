@@ -36,7 +36,7 @@ export class ClientInfo{
 			this.clientInfo += `Phone number: ${this.phone}\n`
 		}
 		if(this.address != ""){
-			this.clientInfo += `Address: ${this.address}`;
+			this.clientInfo += `Address: ${this.address}\n`;
 		}
 	}
 
@@ -44,7 +44,6 @@ export class ClientInfo{
 		this.name = "";				
 		this.phone = "";			
 		this.address = "";			
-		this.numberOfAttribs = 3;
 		this.clientInfo = "";
 	}
 

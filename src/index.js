@@ -26,8 +26,9 @@ Swal.fire({
   position: 'top',
   html:
     `<ul>
+    <li>This page has been made to help agents in their notes to follow a standard.<br/>You can use this page while you're speaking with the customer (ideal usage) or to parse your notes after finish the call.</li>
     <li>You can edit your note by clicking over the right-side section.</li>
-    <li>Please just edit your note when you filled all the fields, otherwise the note would be overwritten by itself.</li>
+    <li>Please <b>just edit your note when you filled all the fields</b>, otherwise the note would be overwritten by itself.</li>
     </ul>`,
   showCloseButton: true,
 })
@@ -39,7 +40,7 @@ document.getElementById("name").focus();
 
 //adding events to the client section (imputs) 
 document.querySelectorAll('.clientDataInput').forEach(htmlElement => {
-	htmlElement.addEventListener('focusout', e =>{
+	htmlElement.addEventListener('change', e =>{
 		clientData.setAttrib(htmlElement.id,htmlElement.value);
 		clientData.setInfo();
 		display();

@@ -80,19 +80,19 @@ export class Seller {
 		
 		if (this.withoutRealtor != undefined){
 			if(this.withoutRealtor){
-				this.marketText += ` Would consider selling without the Realtor\n\n`;
+				this.marketText += ` Would consider selling without the Realtor.\n`;
 			}
 			else{
-				this.marketText += ` **Wouldn't** consider selling without the Realtor\n\n`;
+				this.marketText += ` **Wouldn't** consider selling without the Realtor.\n`;
 			}
 		}
 
 		if (this.listIt != undefined){
 			if(this.listIt){
-				this.marketText += ` and would consider listing the property for sale on the market with us.`;
+				this.marketText += `Would consider listing the property for sale on the market with us.`;
 			}
 			else{
-				this.marketText += ` and wouldn't consider listing the property for sale on the market with us.`;
+				this.marketText += `Wouldn't consider listing the property for sale on the market with us.`;
 			}
 
 		}
@@ -247,6 +247,36 @@ export class Seller {
 
 
 		this.sellerNote="";
+		//Market
+		this.marketText = ""; 				
+		this.onTheMarket = undefined; 		
+		this.withoutRealtor = undefined; 	
+		this.listIt = undefined; 			
+		this.textMarket = ""				
+
+		//Rented
+		this.rentedText=""; 				
+		this.rented=undefined;  				
+		this.lease=undefined;
+		this.status = undefined;
+
+		//main
+		this.mainText = "";
+		this.time="";
+		this.reason="";
+		this.price="";
+
+		//basics
+		this.basicsText="";
+		this.beds=0;
+		this.baths=0;
+		this.dimention=0;
+		this.updates="";
+		this.metric="";
+
+		//Confirm
+		this.confirmText = "";
+		this.secondCall = undefined;
 		document.getElementById('marketOption').style.display = "none";
 		document.getElementById('market').style.display = "none";
 		document.querySelector("#noRented").style.display = "none";
