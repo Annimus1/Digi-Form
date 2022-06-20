@@ -89,10 +89,10 @@ export class Seller {
 
 		if (this.listIt != undefined){
 			if(this.listIt){
-				this.marketText += `Would consider listing the property for sale on the market with us.`;
+				this.marketText += ` Would consider listing the property for sale on the market with us.`;
 			}
 			else{
-				this.marketText += `Wouldn't consider listing the property for sale on the market with us.`;
+				this.marketText += ` Wouldn't consider listing the property for sale on the market with us.`;
 			}
 
 		}

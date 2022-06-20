@@ -41,7 +41,7 @@ i{
 }
 .leadOptions{
 	display: flex;
-	justify-content: space-between;
+	justify-content: space-around;
 }
 
 .radio{

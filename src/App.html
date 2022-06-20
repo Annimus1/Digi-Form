@@ -52,22 +52,23 @@
 
                 <div class="mb-3 leadOptions">
                   <!-- Here the agent will be able to decide which kind of lead is going to do.-->
-    					    <div class="">
+    					    <div>
                     <label for="kind-of-lead" class="form-label">Seller</label>
                     <input class="form-check-input" type="radio" name="kind-of-lead" id="seller" checked>
                   </div>
-                  <!--
-                  <div class="">
+                  
+                  <div>
     					      <label for="buyer" class="form-label">Buyer</label>
                     <input class="form-check-input" type="radio" name="kind-of-lead" id="buyer" >
                   </div>
 
-                  <div class="">
+                  <!--
+                  <div>
                     <label for="lot-land" class="form-label">Lot/Land</label>
                     <input class="form-check-input" type="radio" name="kind-of-lead" id="land" >
                   </div>
 
-                  <div class="">
+                  <div>
       					    <label for="commercial" class="form-label">Commercial</label>
                     <input class="form-check-input" type="radio" name="kind-of-lead" id="commercial" >
                   </div>
@@ -81,8 +82,7 @@
             <!-- SELLER SECTION
               In this section the agent will be able to recolec all the informtion needed to a successful seller lead.
             -->
-    			  <form id="sellerform">
-              
+    			  <form id="sellerform">              
               <!--Market-->
               <label class="form-check-label">Is the property for sale on the market?</label>
               <div class="radio mb-3" style="display: inline-block;">
@@ -225,7 +225,7 @@
                   <input class="form-check-input" type="radio" name="listing" value=true>
                   <label class="form-check-label">Yes</label>
                 </div>
-	      </div><br/>
+	             </div><br/>
               
               <!--Second Call-->
               <label class="form-check-label"> Agreed with the second call.</label>
@@ -245,21 +245,158 @@
           </section>
 
           <section id="buyerSection" style="display: none">
-            <!-- BUYER SECTION
-            -->
-            <label for="" class="form-label">Buyer</label>
+            <form id="buyerForm">
+
+              <!-- KIND OF PROPERTY -->
+              <div class="mb-3">
+                <label for="property" class="form-label">What kind of property would you like?</label>
+                <input type="text" id="property" list="kindOption" class="form-control" placeholder="Kind of property" value>
+                <datalist id="kindOption">
+                  <option>Single family house</option>
+                  <option>Vacant lot</option>
+                  <option>Duplex</option>
+                  <option>Fourplex</option>
+                </datalist>  
+              </div>
+
+              <!-- LOCATION -->
+              <div class="mb-3">
+                <label for="location" class="form-label">Where would you like?</label>
+                <input type="text" id="location" class="form-control" placeholder="City & State" value>  
+              </div>
+
+              <!-- BASICS -->
+              <label class="form-check-label">How many beds and bath would you like?</label>
+              <div class="mb-3 input-group">
+                  <span class="input-group-text">Basics</span>
+                  <input type="number" class="form-control" id="beds" name="buyer_basics" placeholder="Beds" value>
+                  <input type="number" class="form-control" id="baths" name="buyer_basics" placeholder="Baths" value>
+              </div>
+
+              <!-- SPECIAL -->
+              <div class="mb-3">
+                <label for="special" class="form-label">Anything special would you like in the property?</label>
+                <input type="text" id="special" list="specialOption" class="form-control" placeholder="Anything special" value>
+                <datalist id="specialOption">
+                  <option>Pool</option>
+                  <option>Car garage</option>
+                  <option>Big yard</option>
+                  <option>Don't have a Homeowner Association</option>
+                </datalist>   
+              </div>
+              
+              <!-- BUDGET -->
+              <div class="mb-3">
+                <label for="budget" class="form-label">How much would you like to spend for this property?</label>
+                <input type="text" class="form-control" id="budget" placeholder="How much would you like to spend">
+                <datalist id="specialOption">
+                  <option>Depends on how much money we give them for the propery</option>
+                  <option>Depends on the condition</option>
+                  <option>As less as possible</option>
+                </datalist>  
+              </div>
+
+              <!-- AMOUNT OF PROPERTIES -->
+              <div class="mb-3">
+                <label for="amountOfProperties" class="form-label">How many properties do you want to buy this year?</label>
+                <input id="amountOfProperties" type="number" min="1" step="1" pattern="\d*" class="form-control" placeholder="How many properties">  
+              </div>
+
+              <!-- CONTACT -->
+                <!--PHONE  -->
+              <label class="form-check-label">Is this the best phone number to reach you back?</label>
+              <div class="radio mb-3" style="display: inline-block;">
+                <div class="form-check" style="display: inline-block;">
+                  <input class="form-check-input" type="radio" name="buyer_pone_selector" id="buyer_phone_no" value=false>
+                  <label class="form-check-label" for="">No</label>
+                </div>
+
+                <div class="form-check" style="display: inline-block;">
+                  <input class="form-check-input" type="radio" name="buyer_pone_selector" id="buyer_phone_yes" value=true>
+                  <label class="form-check-label" for="" >Yes</label>
+                </div>
+              </div>
+
+                <!-- PHONE INPUT -->
+              <input type="text" id="buyer_phone" class="form-control mb-3" placeholder="Phone number" style="display: none;">  
+              
+
+                <!-- EMAIL -->
+              <div class="mb-3">
+                <label for="buyer_email" class="form-label">Is there any Email address to contact you?</label>                
+                <input type="email" id="buyer_email" class="form-control" placeholder="Email">  
+              </div>
+            </form>
           </section>
 
           <section id="landSection" style="display: none">
-            <!-- LOT/LAND SECTION
-            -->
-            <label for="" class="form-label">Lot/Land</label>
+            <!-- LOT/LAND SECTION-->
+            <!--
+            what can you tell me about the property? Some basics, just like the square footage of the lot, dimensions, any road access or HOA.
+            Does the property have any services like water. sewer, electricity, gas...?
+            what’s making you sell right now?
+            there a ball-park amount that you’d be happy selling for?
+            would you consider listing the property on the market with us? -->
+
+            <form id="landform">              
+              <!--Market-->
+              <label class="form-check-label">Is the land currently on the market with a realtor?</label>
+              <div class="radio mb-3" style="display: inline-block;">
+                <div class="form-check" style="display: inline-block;">
+                  <input class="form-check-input" type="radio" name="" id="" value=false>
+                  <label class="form-check-label" for="">No</label>
+                </div>
+
+                <div class="form-check" style="display: inline-block;">
+                  <input class="form-check-input" type="radio" name="" id="" value=true>
+                  <label class="form-check-label" for="">Yes</label>
+                </div>
+              </div>
+
+              <!--construction-->
+              <label class="form-check-label">Is this an empty lot or is there any building on it?</label>
+              <div class="radio mb-3" style="display: inline-block;">
+                <div class="form-check" style="display: inline-block;">
+                  <input class="form-check-input" type="radio" name="" id="" value=false>
+                  <label class="form-check-label" for="">No</label>
+                </div>
+
+                <div class="form-check" style="display: inline-block;">
+                  <input class="form-check-input" type="radio" name="" id="" value=true>
+                  <label class="form-check-label" for="">Yes</label>
+                </div>
+              </div>
+              <br/>
+
+              <!-- occupied -->
+              <label class="form-check-label">Is the lot vacant or occupied?</label>
+              <div class="radio mb-3" style="display: inline-block;">
+                <div class="form-check" style="display: inline-block;">
+                  <input class="form-check-input" type="radio" name="" id="" value=false>
+                  <label class="form-check-label" for="">No</label>
+                </div>
+
+                <div class="form-check" style="display: inline-block;">
+                  <input class="form-check-input" type="radio" name="" id="" value=true>
+                  <label class="form-check-label" for="">Yes</label>
+                </div>
+              </div>
+
+              <!-- TIME  -->
+              <div class="mb-3">
+                <label for="" class="form-label">How much time would you need before selling?</label>
+                <input type="text" id="" list="landtime" class="form-control" placeholder="Time" value>
+                <datalist id="landtime">
+                  <option>Couple of months</option>
+                </datalist>  
+              </div>
+              
+            </form>
           </section>
 
           <section id="commercialSection" style="display: none">
-            <!-- commercial SECTION
-            -->
-            <label for="" class="form-label">commercial</label>
+            <!-- COMMERCIAL SECTION-->
+            <label class="form-label">coming soon...</label>
           </section>
 
         </div>
@@ -277,14 +414,18 @@
           -->
           <div class="mb-3">
             <textarea type="text" class="form-control" id="display" value></textarea>
-            <button id="btnCopy" role="button" class="btn btn-secondary">Copy</button>
+            <div style="display:flex; justify-content: space-around;">
+              <!-- <button id="save" role="button" class="btn btn-secondary">Save</button> -->
+              <button id="btnCopy" role="button" class="btn btn-primary">Copy</button>
+              <!-- <button id="clear" role="button" class="btn btn-secondary">Erase Saved</button> -->
+            </div>
           </div>
         </section>
       
       </div>
     </main>
     <footer>
-      <span id="version">version: 1.2.5-b</span>
+      <span id="version">version: 1.5.0-b</span>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.3.0/dist/sweetalert2.all.min.js"></script>

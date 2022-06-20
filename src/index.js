@@ -1,13 +1,14 @@
 import { ClientInfo } from './ClientInfo.js';
 import { Seller } from './Seller.js';
+import { Buyer  } from './Buyer.js';
 
 
 // creating class instances
 let clientData = new ClientInfo(); 
-let sellerData = new Seller();
+const sellerData = new Seller();
+const buyerData = new Buyer();
 
 let display_tag = document.getElementById("display"); //getting display tag
-
 
 let agentData = "";
 agentData =window.localStorage.getItem("Data"); // getting the info from localStorage.
@@ -33,6 +34,7 @@ Swal.fire({
   showCloseButton: true,
 })
 
+//####################SELLER LEAD#############################
 
 
 //focus on the first input
@@ -57,7 +59,7 @@ document.querySelectorAll('[name=market]').forEach(radiobuton =>{
 	radiobuton.addEventListener("click",()=>{
 		sellerData.setAttribMarket("market",radiobuton.value,3);
 		display();
-	})});
+})});
 
 //
 document.getElementById('selectOption').addEventListener('change',()=>{
@@ -138,6 +140,75 @@ document.querySelectorAll('[name=call]').forEach(radiobuton =>{
 		display();
 	})});
 
+//####################BUYER LEAD#############################
+
+//  KIND OF PROPERTY
+document.getElementById('property').addEventListener("change",e=>{
+	buyerData.setKindOf(document.getElementById('property').value);
+	display();
+});
+
+// LOCATION
+document.getElementById('location').addEventListener("change",e=>{
+	buyerData.setLocation(document.getElementById('location').value);
+	display();
+});
+
+// BASICS
+document.querySelectorAll('[name="buyer_basics"]').forEach( item =>{
+	item.addEventListener('change',()=>{
+		buyerData.setBasics(item.id,item.value);
+		display();
+	});
+});
+
+// SOMETHING SPECIAL IN THE PROPERTY
+document.getElementById("special").addEventListener("change",()=>{
+	buyerData.setSpecial(document.getElementById("special").value);
+	display();
+})
+
+//BUDGET
+document.getElementById("budget").addEventListener("change",()=>{
+	//console.log("Done");
+	buyerData.setBudget(document.getElementById("budget").value);
+	display();
+})
+
+//AMOUNT OF PROPERTIES
+document.getElementById("amountOfProperties").addEventListener("change",()=>{
+	//console.log("Done");
+	buyerData.setAmount(document.getElementById("amountOfProperties").value);
+	display();
+})
+
+// CONTACT INFO
+// 		PHONE
+document.querySelectorAll('[name="buyer_pone_selector"]').forEach( item =>{
+	item.addEventListener('click',(e)=>{
+		if(item.value === "true"){
+			document.getElementById('buyer_phone').style.display="none";
+			buyerData.setPhone(item.value);
+			display();
+		}else{
+			document.getElementById('buyer_phone').style.display="inline-block";
+			buyerData.setPhone(item.value);
+			display();
+		}
+	});
+});
+
+// 		PHONE INPUT
+document.getElementById("buyer_phone").addEventListener("change",()=>{
+	buyerData.setPhoneNumber(document.getElementById("buyer_phone").value);
+	display();
+})
+
+// 		EMAIL
+document.getElementById("buyer_email").addEventListener("change",(e)=>{
+	buyerData.setEmail(document.getElementById("buyer_email").value);
+	display();
+});
 
 //####################BUTTONS#############################
 
@@ -177,6 +248,9 @@ document.getElementById("reset").addEventListener("click",()=>{
 	})
 	clientData.reset();
 	sellerData.reset();
+	buyerData.reset();
+	// clicking the imput...
+	document.getElementById("seller").click()
 	display();
 })
 
@@ -186,10 +260,10 @@ document.getElementById("back").addEventListener("click",()=>{
 });
 
 
+
 //####################FUNCTIONS#############################
 
-function kindOfLead(){  // [+]
-	
+function kindOfLead(){	
 	// This function controls the info displayed in the script section
 	// it evals if the radiobuton has ben clicked each time the function has been caled
 	// after it, set each info as displayed or hidden.
@@ -212,7 +286,7 @@ function kindOfLead(){  // [+]
 	display();
 }
 
-function display(){     // [+]
+function display(){     
 	// console.log()
 	var note = "";
 
@@ -220,7 +294,7 @@ function display(){     // [+]
 	var date2 = date.split(" ");
 	date = `${date2[0]} ${date2[2]}  ${date2[4]}\n`;
 
-	var items = [agentNote,date,clientData.clientInfo,sellerData.sellerNote];
+	var items = [agentNote,date,clientData.clientInfo,sellerData.sellerNote,buyerData.buyerNote];
 
 	items.forEach(item => {
 		if(item != "" && item != undefined){
@@ -231,4 +305,4 @@ function display(){     // [+]
 	display_tag.value = note;
 }
 
-//[+] To comment.
+
