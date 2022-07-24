@@ -48,3 +48,5 @@ export class ClientInfo{
 	}
 
 }
+
+// Written by Pablo Vergara

@@ -1,12 +1,14 @@
 import { ClientInfo } from './ClientInfo.js';
 import { Seller } from './Seller.js';
 import { Buyer  } from './Buyer.js';
+import { Land   } from './Land.js';
 
 
 // creating class instances
 let clientData = new ClientInfo(); 
 const sellerData = new Seller();
 const buyerData = new Buyer();
+const landData = new Land();
 
 let display_tag = document.getElementById("display"); //getting display tag
 
@@ -210,6 +212,27 @@ document.getElementById("buyer_email").addEventListener("change",(e)=>{
 	display();
 });
 
+
+//####################LAND LEAD#############################
+
+// Construction
+document.querySelectorAll('[name="lotConstruction"]').forEach( element =>{
+	element.addEventListener('click', e => {
+		landData.setConstruction(element.value);
+		display();
+	});
+	
+});
+
+// Market
+document.querySelectorAll('[name="lotMarket"]').forEach( element => {
+	element.addEventListener( 'click',()=>{
+		landData.setMarket(element.value);
+		display();
+	});
+});
+
+
 //####################BUTTONS#############################
 
 // copy
@@ -294,7 +317,7 @@ function display(){
 	var date2 = date.split(" ");
 	date = `${date2[0]} ${date2[2]}  ${date2[4]}\n`;
 
-	var items = [agentNote,date,clientData.clientInfo,sellerData.sellerNote,buyerData.buyerNote];
+	var items = [agentNote,date,clientData.clientInfo,sellerData.sellerNote,buyerData.buyerNote,landData.landNote];
 
 	items.forEach(item => {
 		if(item != "" && item != undefined){

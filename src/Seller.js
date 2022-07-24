@@ -297,3 +297,4 @@ export class Seller {
 
 }
 
+// Written by Pablo Vergara

@@ -181,7 +181,7 @@ export class Buyer{
 		this.buyerNote = ""
 		this.buyerNote = "\t"+this.name+this.mainText+
 		this.secondayText+this.contactText;
-
-		console.log(this.buyerNote);
 	}
 }
+
+// Written by Pablo Vergara

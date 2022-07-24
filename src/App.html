@@ -4,7 +4,6 @@
     	<meta charset="utf-8">
     	<title>Digi-Form</title>
       <link rel="icon" href="../Img/D.png">
-      <!-- <link rel="icon" type="image/x-icon" href="/images/favicon.ico"> -->
     	<!-- Boostrap CSS-->
     	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
     	<!-- Boostrap Icons -->
@@ -18,7 +17,7 @@
       <header>
         <!-- HEADER SECTION
         Here we can find out logo and behavior button such as refresh
-        also a redirectional button to login again.
+        also a redirectional button to login.
         -->
         <button type="button" class="btn btn-secondary" id="back" title="go back to login"> <i class="bi bi-arrow-bar-left"></i> </button>
     		<span><img src="../Img/digital.png"/></span>
@@ -28,28 +27,30 @@
       <div class="main-container">
       <!--MAIN CONTAINER -->
         <div class="scriptSection">
-        <!--
-        Here we have all kind of leads structure.
-        -->
+        <!-- Here we have all kind of leads structure. -->
           <section class="clientData">
             <!--CLIENT SECTION
             Here we can provide basic informtion about the client needed to a successful lead.
             -->
             <form id="clientData">
+                <!-- Name -->
     					  <div class="mb-3">
     					    <label for="client_name" class="form-label ">Client's name</label>
     					    <input type="text" class="form-control clientDataInput" id="name" placeholder="Enter client's name." value>
     				  	</div>
 
+                <!-- Phone -->
     				  	<div class="mb-3">
     					    <label for="phone" class="form-label">Phone</label>
     					    <input type="text" class="form-control clientDataInput" id="phone" aria-describedby="phone" placeholder="Enter client phone number." value>
 
+                <!-- Address -->
     				  	<div class="mb-3">
     					    <label for="address" class="form-label">Address</label>
     					    <input type="text" class="form-control clientDataInput" id="address" aria-describedby="address" placeholder="Enter property address." value>
     				  	</div>
 
+                <!-- Lead's Options -->
                 <div class="mb-3 leadOptions">
                   <!-- Here the agent will be able to decide which kind of lead is going to do.-->
     					    <div>
@@ -62,12 +63,13 @@
                     <input class="form-check-input" type="radio" name="kind-of-lead" id="buyer" >
                   </div>
 
-                  <!--
+                  
                   <div>
                     <label for="lot-land" class="form-label">Lot/Land</label>
                     <input class="form-check-input" type="radio" name="kind-of-lead" id="land" >
                   </div>
 
+                  <!--
                   <div>
       					    <label for="commercial" class="form-label">Commercial</label>
                     <input class="form-check-input" type="radio" name="kind-of-lead" id="commercial" >
@@ -80,7 +82,7 @@
 
           <section id="sellerSection">
             <!-- SELLER SECTION
-              In this section the agent will be able to recolec all the informtion needed to a successful seller lead.
+              In this section the agent will be able to gather all the informtion needed to a successful seller lead.
             -->
     			  <form id="sellerform">              
               <!--Market-->
@@ -91,12 +93,14 @@
                   <label class="form-check-label" for="no-market">No</label>
                 </div>
 
+                <!--Market radio-->
                 <div class="form-check" style="display: inline-block;">
                   <input class="form-check-input" type="radio" name="market" id="marketYes" value=true>
                   <label class="form-check-label" for="yes-market">Yes</label>
                 </div>
               </div>
 
+              <!--Market status-->
               <div class="mb-3" id ="marketOption" style="display: none;">
                 <select id="selectOption" class="form-select">
                   <option value ="on the market with a Realtor." selected>With a Realtor.</option>
@@ -138,6 +142,7 @@
                 </div>
               </div>
 
+              <!-- Tenants lease-->
               <div class="mb-3" id="rented" style="display: none;"> 
                 <label class="form-check-label">Are the tenants month to month or when does the lease ends?</label>
                 <input type="text" list="leaseOptions" class="form-control" id="lease" placeholder="The tenants are month to month">
@@ -147,6 +152,7 @@
                 </datalist>
               </div>
 
+              <!--House resident status-->
               <div class="mb-3" id="noRented" style="display: none;">
                 <input type="text" list="noRentedOption" id="noRentedInput" class="form-control" placeholder="The owner lives there.">
                 <datalist id="noRentedOption">
@@ -240,11 +246,13 @@
                   <label class="form-check-label">Yes</label>
                 </div>
               </div>
-
             </form>
           </section>
 
           <section id="buyerSection" style="display: none">
+            <!-- Buyer SECTION
+              In this section the agent will be able to gather all the informtion needed to a successful Buyer lead.
+            -->
             <form id="buyerForm">
 
               <!-- KIND OF PROPERTY -->
@@ -273,7 +281,7 @@
                   <input type="number" class="form-control" id="baths" name="buyer_basics" placeholder="Baths" value>
               </div>
 
-              <!-- SPECIAL -->
+              <!--SPECIAL FEATURE-->
               <div class="mb-3">
                 <label for="special" class="form-label">Anything special would you like in the property?</label>
                 <input type="text" id="special" list="specialOption" class="form-control" placeholder="Anything special" value>
@@ -302,7 +310,7 @@
                 <input id="amountOfProperties" type="number" min="1" step="1" pattern="\d*" class="form-control" placeholder="How many properties">  
               </div>
 
-              <!-- CONTACT -->
+              <!-- KIND OF CONTACT -->
                 <!--PHONE  -->
               <label class="form-check-label">Is this the best phone number to reach you back?</label>
               <div class="radio mb-3" style="display: inline-block;">
@@ -317,7 +325,7 @@
                 </div>
               </div>
 
-                <!-- PHONE INPUT -->
+                <!--PHONE INPUT-->
               <input type="text" id="buyer_phone" class="form-control mb-3" placeholder="Phone number" style="display: none;">  
               
 
@@ -331,42 +339,41 @@
 
           <section id="landSection" style="display: none">
             <!-- LOT/LAND SECTION-->
-            <!--
-            what can you tell me about the property? Some basics, just like the square footage of the lot, dimensions, any road access or HOA.
-            Does the property have any services like water. sewer, electricity, gas...?
-            what’s making you sell right now?
-            there a ball-park amount that you’d be happy selling for?
-            would you consider listing the property on the market with us? -->
 
-            <form id="landform">              
-              <!--Market-->
-              <label class="form-check-label">Is the land currently on the market with a realtor?</label>
-              <div class="radio mb-3" style="display: inline-block;">
-                <div class="form-check" style="display: inline-block;">
-                  <input class="form-check-input" type="radio" name="" id="" value=false>
-                  <label class="form-check-label" for="">No</label>
-                </div>
-
-                <div class="form-check" style="display: inline-block;">
-                  <input class="form-check-input" type="radio" name="" id="" value=true>
-                  <label class="form-check-label" for="">Yes</label>
-                </div>
-              </div>
-
+            <form id="landform">
+              
               <!--construction-->
-              <label class="form-check-label">Is this an empty lot or is there any building on it?</label>
-              <div class="radio mb-3" style="display: inline-block;">
-                <div class="form-check" style="display: inline-block;">
-                  <input class="form-check-input" type="radio" name="" id="" value=false>
-                  <label class="form-check-label" for="">No</label>
-                </div>
+              <div>
+                <label class="form-check-label">Is this an empty lot or is there any building on it?</label>
+                <div class="radio mb-3" style="display: inline-block;">
+                  <div class="form-check" style="display: inline-block;">
+                    <input class="form-check-input" type="radio" name="lotConstruction" id="" value="false">
+                    <label class="form-check-label" for="">No</label>
+                  </div>
 
-                <div class="form-check" style="display: inline-block;">
-                  <input class="form-check-input" type="radio" name="" id="" value=true>
-                  <label class="form-check-label" for="">Yes</label>
+                  <div class="form-check" style="display: inline-block;">
+                    <input class="form-check-input" type="radio" name="lotConstruction" id="" value="true">
+                    <label class="form-check-label" for="">Yes</label>
+                  </div>
                 </div>
               </div>
-              <br/>
+
+              <!--Market-->
+              <div>
+                <label class="form-check-label">Is the land currently on the market with a realtor?</label>
+                <div class="radio mb-3" style="display: inline-block;">
+                  <div class="form-check" style="display: inline-block;">
+                    <input class="form-check-input" type="radio" name="lotMarket" value=false>
+                    <label class="form-check-label" for="">No</label>
+                  </div>
+
+                  <div class="form-check" style="display: inline-block;">
+                    <input class="form-check-input" type="radio" name="lotMarket" value=true>
+                    <label class="form-check-label" for="">Yes</label>
+                  </div>
+
+                </div>
+              </div>
 
               <!-- occupied -->
               <label class="form-check-label">Is the lot vacant or occupied?</label>
@@ -390,7 +397,98 @@
                   <option>Couple of months</option>
                 </datalist>  
               </div>
+
+              <!-- Dimensions -->
+              <div class="mb-3">
+                <label for="lotDimention" class="form-label">what can you tell me about the property? Some basics, just like the square footage of the lot or the dimension ?</label>
+                <input type="text" id="lotDimention" class="form-control" placeholder=" 25x25 sqft / 5.3 Acres" value/>
+              </div>
               
+              <!-- Road access -->
+              <div class="mb-3">
+                <label for="">Does the land has road access?</label>
+                <div class="radio mb-3" style="display: inline-block;">
+                  <div class="form-check" style="display: inline-block;">
+                    <input class="form-check-input" type="radio" name="" id="" value=false>
+                    <label class="form-check-label" for="">No</label>
+                  </div>
+
+                  <div class="form-check" style="display: inline-block;">
+                    <input class="form-check-input" type="radio" name="" id="" value=true>
+                    <label class="form-check-label" for="">Yes</label>
+                  </div>
+                </div>
+              </div>
+
+              <!-- HOA -->
+              <div>
+                <label for="">Does the land has HOA? (HomeOwner Association)</label>
+                <div class="radio mb-3" style="display: inline-block;">
+                  <div class="form-check" style="display: inline-block;">
+                    <input class="form-check-input" type="radio" name="" id="" value=false>
+                    <label class="form-check-label" for="">No</label>
+                  </div>
+
+                  <div class="form-check" style="display: inline-block;">
+                    <input class="form-check-input" type="radio" name="" id="" value=true>
+                    <label class="form-check-label" for="">Yes</label>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Services -->
+              <div class="mb-3">
+                <label for="" class="">Does the lot has any services like water. sewer, electricity, gas?</label>
+                <div class="radio mb-3" style="display: inline-block;">
+                  <div class="form-check" style="display: inline-block;">
+                    <input class="form-check-input" type="radio" name="" id="" value=false>
+                    <label class="form-check-label" for="">No</label>
+                  </div>
+
+                  <div class="form-check" style="display: inline-block;">
+                    <input class="form-check-input" type="radio" name="" id="" value=true>
+                    <label class="form-check-label" for="">Yes</label>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Specific service -->
+              <div class="" style="display: none ;">
+                <ul>
+                  <li> 
+                    <label for="">Water</label>
+                    <input type="checkbox" name="" id="" class="form-check-input" value="water">
+                  </li>
+
+                  <li>
+                    <label for="">Sewer</label>
+                    <input type="checkbox" name="" id="" class="form-check-input" value="sewer">
+                  </li>
+
+                  <li>
+                    <label for="">Electicity</label>
+                    <input type="checkbox" name="" id="" class="form-check-input" value="electicity">
+                  </li>
+
+                  <li>
+                    <label for="">Gas</label>
+                    <input type="checkbox" name="" id="" class="form-check-input" value="gas">
+                  </li>
+                </ul>
+              </div>
+              
+              <!-- Reason -->
+              <div class="mb-3">
+                <label for="">Do you have any special reason for selling this property</label>
+                <input type="text" name="" id="" placeholder="Reason." class="form-control">
+              </div>
+
+              <!-- Price -->
+              <div class="mb-3">
+                <label for="">Do you have any price in mind for this property</label>
+                <input type="text" name="" id="" placeholder="Reason." class="form-control">
+              </div>
+
             </form>
           </section>
 
@@ -424,8 +522,9 @@
       
       </div>
     </main>
+
     <footer>
-      <span id="version">version: 1.5.0-b</span>
+      <span id="version">version: 1.7.5-b</span>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.3.0/dist/sweetalert2.all.min.js"></script>
