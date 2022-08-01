@@ -183,5 +183,3 @@ export class Buyer{
 		this.secondayText+this.contactText;
 	}
 }
-
-// Written by Pablo Vergara

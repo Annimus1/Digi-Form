@@ -5,7 +5,7 @@ import { Land   } from './Land.js';
 
 
 // creating class instances
-let clientData = new ClientInfo(); 
+const clientData = new ClientInfo(); 
 const sellerData = new Seller();
 const buyerData = new Buyer();
 const landData = new Land();
@@ -95,7 +95,6 @@ document.querySelector("#noRentedInput").addEventListener("change",()=>{
 	display();
 });
 
-// main
 //time
 document.querySelector("#time").addEventListener("change",()=>{
 	sellerData.setAttribMain("time",document.querySelector("#time").value);
@@ -212,22 +211,108 @@ document.getElementById("buyer_email").addEventListener("change",(e)=>{
 	display();
 });
 
-
 //####################LAND LEAD#############################
 
 // Construction
 document.querySelectorAll('[name="lotConstruction"]').forEach( element =>{
 	element.addEventListener('click', e => {
 		landData.setConstruction(element.value);
+		// controlling the building description view.
+		(element.value == 'true') ? document.getElementById('building').style.display = 'block' : document.getElementById('building').style.display = 'None'; 
+
 		display();
 	});
 	
+});
+
+// Construction Description
+document.getElementById('buildingDescription').addEventListener('change', ()=>{
+	landData.setBuilding(document.getElementById('buildingDescription').value);
+	display();
 });
 
 // Market
 document.querySelectorAll('[name="lotMarket"]').forEach( element => {
 	element.addEventListener( 'click',()=>{
 		landData.setMarket(element.value);
+		(element.value == 'true') ? document.getElementById('landRealtor').style.display = 'block' : document.getElementById('landRealtor').style.display = 'None';
+		display();
+	});
+});
+
+// With a Realtor
+document.querySelectorAll('[name="landRealtor"]').forEach( element => {
+	element.addEventListener( 'click',()=>{
+		landData.setRealtor(element.value);
+		display();
+	});
+});
+
+// Reason
+document.getElementById('landReason').addEventListener('change', (element)=>{
+	landData.setReason(document.getElementById('landReason').value);
+	display();
+});
+
+// Price
+document.getElementById('landPrice').addEventListener('change', ()=>{
+	landData.setPrice(document.getElementById('landPrice').value);
+	display();
+});
+
+// Time
+document.getElementById('landTime').addEventListener('change', ()=>{
+	landData.setTime(document.getElementById('landTime').value);
+	display();
+});
+
+// Dimentions
+document.getElementById('lotDimention').addEventListener('change', ()=>{
+	landData.setDimention(document.getElementById('lotDimention').value);
+	display();
+});
+
+// Road Access
+document.querySelectorAll('[name="landRoad"]').forEach( element => {
+	element.addEventListener('click', ()=>{
+		landData.setRoad(element.value);
+		display();
+	});
+});
+
+// HOA
+document.querySelectorAll('[name="landHOA"]').forEach( element => {
+	element.addEventListener('click', ()=>{
+		landData.setHOA(element.value);
+		display();
+	});
+});
+
+// Services 
+document.querySelectorAll('[name="landServices"]').forEach( element => {
+	element.addEventListener('click', () => {
+		landData.setService(element.value);
+		
+		if (element.value == 'true') {// if the user hit yes show up the hidden div (services list)
+			document.getElementById('landServicesList').style.display = 'block';
+		}
+		else{ // if the user hit "No" hide the div (services list)
+			document.getElementById('landServicesList').style.display = 'none';
+			landData.resetServices();
+			// cleanning all the checkbuttons
+			document.querySelectorAll('[name="landServicesItem"]').forEach(service =>{
+				service.checked=false;
+			});
+		}
+
+		display();
+	});
+});
+
+// Services Items
+document.querySelectorAll('[name="landServicesItem"]').forEach( element => {
+	element.addEventListener( 'change', () => {
+		landData.setServiceItem(element.checked,element.value);
 		display();
 	});
 });
@@ -268,12 +353,23 @@ document.getElementById("btnCopy").addEventListener("click",()=>{
 document.getElementById("reset").addEventListener("click",()=>{
 	document.querySelectorAll("form").forEach(form =>{
 		form.reset();
-	})
+	});
+
+	document.querySelectorAll('.landServicesItem').forEach(service =>{
+		service.reset();
+	});
+
+	// hide Services List
+	document.getElementById('landServicesList').style.display = 'none';
+
 	clientData.reset();
 	sellerData.reset();
 	buyerData.reset();
+	landData.reset();
+
 	// clicking the imput...
 	document.getElementById("seller").click()
+	
 	display();
 })
 
@@ -281,8 +377,6 @@ document.getElementById("reset").addEventListener("click",()=>{
 document.getElementById("back").addEventListener("click",()=>{
 	window.location.href="../index.html";
 });
-
-
 
 //####################FUNCTIONS#############################
 
@@ -310,7 +404,7 @@ function kindOfLead(){
 }
 
 function display(){     
-	// console.log()
+	// console.log(``);
 	var note = "";
 
 	var date = Date();
@@ -328,4 +422,9 @@ function display(){
 	display_tag.value = note;
 }
 
+// toggle Requirements panel 
+document.getElementById('requirement-btn').addEventListener('click',()=>{
+	document.getElementById('requirements').classList.toggle("displayed");
+	document.getElementById('requirements').classList.toggle("hidden");
+});
 

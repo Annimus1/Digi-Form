@@ -35,10 +35,12 @@ i{
 	color: #0bd373;
 	background-color: #303a3c;
 }
+
 .displaySection>div>button{
 	padding: 7px 30px;
 	margin-left: calc(40% - 30px);
 }
+
 .leadOptions{
 	display: flex;
 	justify-content: space-around;
@@ -47,6 +49,53 @@ i{
 .radio{
 	padding-left: 1em;
 }
+
+.displayed {
+	top: 100px;
+	right: 250px;
+}
+
+.hidden{
+	top: 100px;
+	right: 110px;	
+}
+
+
+#requirements{
+	width: 30px;
+
+	position: absolute;	
+
+	display: flex;
+	flex-direction: row;
+	column-gap: 25px;
+}
+
+#requirement-btn{
+	height: 40px;
+	justify-content: center;
+}
+
+#requirements>label:hover{
+	cursor: pointer;
+}
+
+#requirements-container{
+	
+	align-items: center;
+	text-align: center;
+	justify-content: center;
+}
+
+#requirements>#requirements-container>ul>li>a {
+	color: #0bd373;
+	text-decoration: none;
+}
+
+#requirements>#requirements-container>ul>li>a:hover{
+	color: aliceblue;
+}
+
 
 footer{
 	text-align: left;

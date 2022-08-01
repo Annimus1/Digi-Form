@@ -232,10 +232,10 @@ export class Seller {
 
 		if(this.secondCall != undefined){
 			if(this.secondCall){
-				this.confirmText = "Agreed with the second call."
+				this.confirmText = "The owner agreed to receive the second call."
 			}
 			else{
-				this.confirmText = "**didn't agree with the second call.**"
+				this.confirmText = "**The owner didn't agree to receive the second call.**"
 			}
 		}
 
@@ -297,4 +297,3 @@ export class Seller {
 
 }
 
-// Written by Pablo Vergara
