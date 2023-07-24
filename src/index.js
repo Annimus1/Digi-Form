@@ -15,6 +15,15 @@ let display_tag = document.getElementById("display"); //getting display tag
 let agentData = "";
 agentData =window.localStorage.getItem("Data"); // getting the info from localStorage.
 agentData = JSON.parse(agentData); // parsing the info into an object.
+if (!agentData){
+		agentData = {
+			name:"DEMO",
+			nickname:"DEMO",
+			portal:"DEMO.readymode.com",
+			team:"DEMO TEAM"
+		}
+}
+		
  
 // create a paragraph where the agent's info is setted
 let agentNote = `Agent's name: **${agentData.name}**.\n"`
