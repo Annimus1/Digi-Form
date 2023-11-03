@@ -31,8 +31,36 @@ export default function App() {
 		setNote(NOTE)
 	}
 
+	function copy(event){
+			try{
+				
+				event.preventDefault()
+
+				let text = document.getElementById("display");
+				navigator.clipboard.writeText(text.value);
+				// Sweet alert 2
+				Swal.fire({
+					position: 'top-end',
+					icon: 'success',
+					title: 'Copied to clipboard successfully',
+					showConfirmButton: false,
+					timer: 1500
+				})
+			}
+			catch (e) {
+				console.log(e)
+				Swal.fire({
+					position: 'top-end',
+					icon: 'error',
+					title: 'Something went wrong :c ',
+					showConfirmButton: false,
+					timer: 2000
+				})
+			}
+	}
+
 	return (
-		<main className="min-w-[360px] w-full h-screen flex flex-col">
+		<main className="min-w-[360px] w-full h-screen flex flex-col accent-william-500">
 			
 			<header className="h-12 bg-william-600">
 
@@ -86,15 +114,17 @@ export default function App() {
 					<textarea 
 						disabled 
 						name="" 
-						id="" 
+						id="display" 
 						className="w-full h-96 rounded p-2 font-mono md:w-3/4 lg:w-[90%]" 
 						placeholder="Here the note will be generated" 
 						value={note}>
 					</textarea>
 
 					<input 
+						id="btnCopy"
 						className="w-1/3 border py-2 md:mt-2 px-6 rounded text-black font-semibold bg-gradient-to-r from-william-300 to-william-500 hover: hover:cursor-pointer"
 						type="submit"
+						onClick={ e => copy(e)}
 						value={'Copy'}
 					/>
 				</section>
