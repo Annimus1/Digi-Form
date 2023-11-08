@@ -1,10 +1,10 @@
-import Admin from "./pages/Admin"
+import Home from "./pages/Home"
 
 function App() {
 		
 	return (
 		<div className='min-h-screan w-screen'>
-			<Admin />
+			<Home />
 		</div>
 	)
 }

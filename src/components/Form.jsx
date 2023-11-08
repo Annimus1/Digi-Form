@@ -2,6 +2,7 @@ import { useState } from "react"
 import Question from "./Question"
 import QuestionRadio from "./QuestionRadio"
 import QuestionSpecial from "./QuestionSpecial"
+import Header from "./Header"
 
 export default function Form({ data }) {
 	const [ note, setNote ] = useState(undefined)
@@ -60,9 +61,11 @@ export default function Form({ data }) {
 
 	return (
 		<main className="min-w-[360px] w-full h-screen flex flex-col accent-william-500">
+
+			<Header />
 			
 			<form 
-				className="p-2 bg-william-200 text-william-700 lg:h-full lg:flex "
+				className="pt-12 p-2 bg-william-200 text-william-700 lg:h-full lg:flex "
 				onChange={e => {handleNote(e)}}
 			>
 				
