@@ -1,14 +1,42 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import QuestionBuild from '../components/QuestionBuild'
-import { writeJson } from '../util/functions'
+import { Save } from '../util/functions'
 
 import Header from '../components/Header'
 
 
 function Admin() {
 	const [ script, setScript ] = useState({label:'', script:[], resources:[]})
-	const [ questionList, setQuestionList ] = useState([<QuestionBuild script={script} addToScript={setScript}/>])		
+	const [ newQuestion, setNewQuestion ] = useState(null)
+	const [ questionList, setQuestionList ] = useState([<QuestionBuild script={script} addToScript={setNewQuestion}/>])		
+
+	useEffect(()=>{
+		if(newQuestion !== null ){
+			let prev = {...script} 					
+			prev['script'].push(newQuestion)
+			setNewQuestion(null)
+		}
+	},[newQuestion])
+
 	
+	const handleChange = (element, property) =>{
+			let prev = {...script}
+			if(property=='resources'){
+
+				if(element.target.value.length != 0){
+					let options = element.target.value.split(',')
+					prev[property] = [] 
+					options.forEach( e => {
+						prev[property].push(e) 
+					})
+				}
+			} else if(property == 'label'){
+				prev[property] = element.target.value
+			}
+			
+			setScript(prev)
+	}
+
 	return (
 		<div className='min-h-screan w-screen'>
 			<Header />
@@ -19,9 +47,7 @@ function Admin() {
 					<input 
             className='px-2 rounded outline-none text-xl'
 						onChange={(element) =>{
-							let prev = {...script}
-							prev['label'] = element.target.value
-							setScript(prev)
+							handleChange( element, 'label')							
 						}}
 						type="text" 
 						placeholder='name of the script'
@@ -33,16 +59,7 @@ function Admin() {
 					<input 
             className='px-2 rounded outline-none text-xl w-full'
 						onChange={(element) =>{
-              let prev = {...script}
-              if(element.target.value.length != 0){
-                let options = element.target.value.split(',')
-                prev['resources'] = [] 
-                options.forEach( e => {
-                  prev['resources'].push(e) 
-                })
-                console.log(prev['resources'])
-                setScript(prev);
-              }
+              handleChange(element,'resources')
 						}}
 						type="text" 
 						placeholder='Enter sources separated by comma.'
@@ -63,7 +80,7 @@ function Admin() {
 				onClick={(event)=>{
 					event.preventDefault();
 					let prev = [...questionList]
-					prev.push(<QuestionBuild script={script} addToScript={setScript}/>)
+					prev.push(<QuestionBuild script={script} addToScript={setNewQuestion}/>)
 					setQuestionList(prev)
 				}}
         title='Add question'
@@ -73,7 +90,13 @@ function Admin() {
 
 				<button 
  				className='self-center border py-2 md:mt-2 px-6 rounded text-black font-semibold bg-gradient-to-r from-william-300 to-william-500 hover:text-white hover:cursor-pointer'
-        onClick={(e) =>{ e.preventDefault(); writeJson(script)}}>log(sent to the database)</button>
+        onClick={
+					(e) =>{ 
+						e.preventDefault(); 
+						Save(script)
+						window.location.reload()
+					}}
+				>Save Script</button>
 			</form>
 		</div>
 	)

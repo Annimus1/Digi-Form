@@ -30,7 +30,6 @@ function QuestionBuild({ script, addToScript }) {
 			options.forEach( e => {
 				prev[property].push(e) 
 			})
-			console.log(prev[property])
 		}else{
 			prev[property] = element.target.value
 		}
@@ -144,11 +143,8 @@ function QuestionBuild({ script, addToScript }) {
 
 			<button disabled={check} 
 				onClick={(e)=>{
-					e.preventDefault()
-					// console.log(question);
-					let prev = {...script} 					
-					prev['script'].push(question) 
-					addToScript(prev)
+					e.preventDefault();
+					addToScript(question);
 					setCheck(!check);
 					}}>
 				{
