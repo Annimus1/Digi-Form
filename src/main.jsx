@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
-import Admin from './pages/Admin.jsx'
+import { Auth } from './authContext/Auth.jsx'
 import Form from './pages/Form.jsx'
 
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
@@ -16,7 +16,7 @@ const router = createBrowserRouter([
   },
   {
     path:'/admin',
-    element: <Admin />,
+    element: <Auth />,
     errorElement: <Error />
   },
   {

@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react'
 import QuestionBuild from '../components/QuestionBuild'
 import { Save } from '../util/functions'
-
 import Header from '../components/Header'
 
 
@@ -9,6 +8,8 @@ function Admin() {
 	const [ script, setScript ] = useState({label:'', script:[], resources:[]})
 	const [ newQuestion, setNewQuestion ] = useState(null)
 	const [ questionList, setQuestionList ] = useState([<QuestionBuild script={script} addToScript={setNewQuestion}/>])		
+
+
 
 	useEffect(()=>{
 		if(newQuestion !== null ){
@@ -91,9 +92,9 @@ function Admin() {
 				<button 
  				className='self-center border py-2 md:mt-2 px-6 rounded text-black font-semibold bg-gradient-to-r from-william-300 to-william-500 hover:text-white hover:cursor-pointer'
         onClick={
-					(e) =>{ 
+					async(e) =>{ 
 						e.preventDefault(); 
-						Save(script)
+						await Save(script)
 						window.location.reload()
 					}}
 				>Save Script</button>
