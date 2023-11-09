@@ -3,6 +3,7 @@ import Question from "./Question"
 import QuestionRadio from "./QuestionRadio"
 import QuestionSpecial from "./QuestionSpecial"
 import Header from "./Header"
+import Footer from "./Footer"
 
 export default function Form({ data }) {
 	const [ note, setNote ] = useState(undefined)
@@ -60,12 +61,12 @@ export default function Form({ data }) {
 	}
 
 	return (
-		<main className="min-w-[360px] w-full h-screen flex flex-col accent-william-500">
+		<main className="min-w-[360px] w-screen h-screen flex flex-col accent-william-500 bg-william-200">
 
 			<Header />
 			
 			<form 
-				className="pt-12 p-2 bg-william-200 text-william-700 lg:h-full lg:flex "
+				className="h-screen pt-12 p-2 text-william-700 lg:h-full lg:flex "
 				onChange={e => {handleNote(e)}}
 			>
 				
@@ -74,7 +75,7 @@ export default function Form({ data }) {
 
 					<h2 className="text-3xl font-serif my-3 text-center md:w-1/2">{data.label} Script</h2>
 
-					<article className="md:w-3/4 lg:w-[90%]">
+					<article className=" w-screen md:w-3/4 lg:w-[90%]">
 						{
 							data.script.map( element => {
 								switch (element.type) {
@@ -110,7 +111,7 @@ export default function Form({ data }) {
 						disabled 
 						name="" 
 						id="display" 
-						className="w-full h-96 rounded p-2 font-mono md:w-3/4 lg:w-[90%]" 
+						className="w-5/6 h-96 rounded p-2 font-mono md:w-3/4 lg:w-[90%]" 
 						placeholder="Here the note will be generated" 
 						value={note}>
 					</textarea>
@@ -123,8 +124,9 @@ export default function Form({ data }) {
 						value={'Copy'}
 					/>
 				</section>
-
 			</form>
+
+			<Footer />
 		</main>
 	)
 }

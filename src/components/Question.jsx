@@ -9,7 +9,7 @@ function Question({question}) {
       <div className="flex flex-col p-1     md:mb-3">
 				<label htmlFor={question.id}>{question.question}</label>
 				<input 
-					className="border p-1 rounded"
+					className="border p-1 rounded w-5/6"
 					type={question.type} 
 					placeholder={question.placeholder} 
 					min={0}
@@ -36,7 +36,7 @@ function Question({question}) {
 					htmlFor={question.id}
 				>{question.question}</label>
 				<input 
-					className="border p-1 rounded"
+					className="border p-1 rounded w-5/6"
 					type={question.type}  
 					min={0}
 					placeholder={0} 

@@ -25,28 +25,29 @@ function QuestionRadio({question}) {
         <label>{question.question}</label>
         
         <input className='hidden' type="text" value={undefined} id={question.id} />
-        
-        <div className="flex gap-1 md:ml-3">
-          <label htmlFor={yes}>Yes</label>
-          <input 
-            id={yes} 
-            type={'radio'} 
-            value={'Yes.'} 
-            name={question.name} 
-            onChange={handleValue}
-          />
-        </div>
+        <div className='flex gap-5 my-1 md:my-0 md:flex-none'>
+          <div className="flex gap-1 md:ml-3">
+            <label htmlFor={yes}>Yes</label>
+            <input 
+              id={yes} 
+              type={'radio'} 
+              value={'Yes.'} 
+              name={question.name} 
+              onChange={handleValue}
+            />
+          </div>
 
-        <div className="flex gap-1 md:ml-3">
-          <label htmlFor={no}>No</label> 
-          <input 
-            id={no} 
-            type={'radio'} 
-            value={'No.'} 
-            name={question.name}
-            onChange={handleValue}
-          /> 
-        </div>	
+          <div className="flex gap-1 md:ml-3">
+            <label htmlFor={no}>No</label> 
+            <input 
+              id={no} 
+              type={'radio'} 
+              value={'No.'} 
+              name={question.name}
+              onChange={handleValue}
+            /> 
+          </div>	
+          </div>
 		  </div>
     )
   }
@@ -74,20 +75,20 @@ function QuestionRadio({question}) {
 
         <input className='hidden' type="text" value={undefined} id={question.id} />
 				
-        <div className="flex gap-1 md:ml-3">
-					<label htmlFor={first}>{question.options[0]}</label>
-					<input type={'radio'} value={question.options[0] + '.'} id={first} name={question.name} 
-						onChange={handleValue}/>
-				</div>
+        <div className='flex gap-5  my-1 md:my-0 md:flex-none'>
 
-				<div className="flex gap-1 md:ml-3">
-					<label htmlFor={second}>{question.options[1]}</label> 
-          {
-            // console.log()
-          }
-					<input type={'radio'} value={question.options[1] + '.'} id={second} name={question.name}
-						onChange={handleValue}/> 
-				</div>
+          <div className="flex gap-1 md:ml-3">
+            <label htmlFor={first}>{question.options[0]}</label>
+            <input type={'radio'} value={question.options[0] + '.'} id={first} name={question.name} 
+              onChange={handleValue}/>
+          </div>
+
+          <div className="flex gap-1 md:ml-3">
+            <label htmlFor={second}>{question.options[1]}</label> 
+            <input type={'radio'} value={question.options[1] + '.'} id={second} name={question.name}
+              onChange={handleValue}/> 
+          </div>
+        </div>
 			</div>
     )
   }
