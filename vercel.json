@@ -1,16 +1,5 @@
 {
-  "redirects": [
-    {
-      "source": "/",
-      "destination": "/"
-    },
-    {
-      "source": "/script/:path*",
-      "destination": "/script/:path*"
-    },
-    {
-      "source": "/admin",
-      "destination": "/admin"
-    }
-  ]
+   "rewrites":  [
+       {"source": "/(.*)", "destination": "/"}
+    ]
 }
