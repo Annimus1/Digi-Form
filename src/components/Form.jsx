@@ -61,7 +61,7 @@ export default function Form({ data }) {
 	}
 
 	return (
-		<main className="min-w-[360px] w-screen h-screen flex flex-col accent-william-500 bg-william-200">
+		<main className="min-w-[360px] w-screen min-h-screen h-full flex flex-col accent-william-500 bg-william-200">
 
 			<Header />
 			
