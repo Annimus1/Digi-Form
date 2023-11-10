@@ -66,7 +66,7 @@ export default function Form({ data }) {
 			<Header />
 			
 			<form 
-				className="h-screen pt-12 p-2 text-william-700 lg:h-full lg:flex "
+				className="min-h-screen h-full pt-12 p-2 text-william-700 lg:h-full lg:flex"
 				onChange={e => {handleNote(e)}}
 			>
 				
