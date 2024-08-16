@@ -1,4 +1,4 @@
-import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { doc, setDoc, getDoc  } from "firebase/firestore"; 
 import { db } from "../../firebaseConfig.js"
 
@@ -23,28 +23,24 @@ export async function get(id){
   }
 }
 
-export async function Login(){
-  const provider = new GoogleAuthProvider();
+export async function Login(email, password){
+
   const auth = getAuth();
   let userReturn = null;
-
-  try {
-    const result = await signInWithPopup(auth, provider)
-    // The signed-in user info.
-    const user = result.user;    
-    userReturn = user;    
-  } catch (error) {
-    // Handle Errors here.
-    const errorCode = error.code;
+  
+  try{
+    const userCredential = await signInWithEmailAndPassword(auth, email, password);
+    const user = userCredential.user;
+    userReturn = user;
+  }
+  
+  catch (error){
     const errorMessage = error.message;
-    console.log(errorCode);    
+    const errorCode = error.code;
+    console.error(errorCode);
   }
 
   finally{
-    return userReturn
+    return userReturn;
   }
-
-  
 }
-
-
